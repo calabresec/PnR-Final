@@ -81,11 +81,11 @@ class GoPiggy(pigo.Pigo):
     def twirl(self):
         print ('twirl')
         for x in range (2):
-            self.bwd(2)
-            self.right_rot(90)
-            self.left_rot(180)
-            self.right_rot(90)
-            self.fwd(2)
+            self.encB(20)
+            self.encR(90)
+            self.encL(180)
+            self.encR(90)
+            self.encF(20)
 
 
 
