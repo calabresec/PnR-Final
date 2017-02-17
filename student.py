@@ -72,7 +72,6 @@ class GoPiggy(pigo.Pigo):
 
 
     def print ('shimmy')
-         print ('shimmy')
          for x in range (3):
             self.encR(3)
             self.servo(140)
