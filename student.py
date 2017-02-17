@@ -65,6 +65,7 @@ class GoPiggy(pigo.Pigo):
         ##### WRITE YOUR FIRST PROJECT HERE
         self.shimmy()
         self.twirl()
+        self.back_it_up()
         ##self.chacha()
         ##self.sprinkler()
         ##self.back_it_up()
