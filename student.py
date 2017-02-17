@@ -71,15 +71,14 @@ class GoPiggy(pigo.Pigo):
         ##self.back_it_up()
 
 
-    ##def shimmy(self):
-        print ('shimmy')
+    def print ('shimmy')
         for x in range (3):
             self.servo(30)
             self.encR(3)
             self.servo(140)
             self.encL(3)
 
-    ##def twirl(self):
+##def twirl(self):
         print ('twirl')
         for x in range (2):
             self.encB(20)
