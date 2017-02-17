@@ -89,14 +89,14 @@ class GoPiggy(pigo.Pigo):
 
     def back_it_up(self):
         print('back_it_up')
-        for x in range (2):
-            self.encB(3)
-            self.encL(3)
-            self.encB(3)
-            self.encR(3)
-            self.encB(3)
-            self.encR(3)
-            self.encF(3)
+        for x in range (3):
+            self.encB(30)
+            self.encL(30)
+            self.encB(30)
+            self.encR(30)
+            self.encB(30)
+            self.encR(30)
+            self.encF(30)
             self.stop()
 
     def chacha(self):
