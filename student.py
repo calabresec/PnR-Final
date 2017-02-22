@@ -78,6 +78,12 @@ class GoPiggy(pigo.Pigo):
         self.chacha()
         self.head_shake()
 
+    def head_shake(self):
+         for x in range(2):
+            self.servo(30)
+            self.servo(150)
+            self.servo(self.MIDPOINT)
+
     def shimmy(self):
         print('shimmy')
         for x in range(3):
