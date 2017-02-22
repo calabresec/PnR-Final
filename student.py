@@ -80,14 +80,14 @@ class GoPiggy(pigo.Pigo):
 
     def shimmy(self):
         print('shimmy')
-        for x in range (3):
+        for x in range(3):
             self.encR(3)
             self.servo(140)
             self.encL(3)
 
     def twirl(self):
         print ('twirl')
-        for x in range (1):
+        for x in range(2):
             self.encB(15)
             self.encR(30)
             self.encL(15)
@@ -98,7 +98,7 @@ class GoPiggy(pigo.Pigo):
 
     def back_it_up(self):
         print('back_it_up')
-        for x in range (3):
+        for x in range(3):
             self.encB(30)
             self.encL(30)
             self.encB(30)
@@ -110,7 +110,7 @@ class GoPiggy(pigo.Pigo):
 
     def chacha(self):
         print('chacha')
-        for x in range (2):
+        for x in range(2):
              self.encR(15)
              self.encL(30)
              self.encB(20)
