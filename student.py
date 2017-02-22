@@ -76,7 +76,7 @@ class GoPiggy(pigo.Pigo):
         self.twirl()
         self.back_it_up()
         self.chacha()
-        self.headshake()
+        self.head_shake()
 
     def shimmy(self):
         print('shimmy')
