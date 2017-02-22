@@ -48,6 +48,7 @@ class GoPiggy(pigo.Pigo):
         menu = {"n": ("Navigate forward", self.nav),
                 "d": ("Dance", self.dance),
                 "c": ("Calibrate", self.calibrate),
+                "w": ("Sweep", self.sweep),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit)
                 }
@@ -59,6 +60,14 @@ class GoPiggy(pigo.Pigo):
         # activate the item selected
         menu.get(ans, [None, error])[1]()
 
+    def sweep(self):
+        for x in range(20,160,2):
+            self.servo(x)
+            if self.dist() < 30:
+                print('AAHHH')
+                break
+
+
     #YOU DECIDE: How does your GoPiggy dance?
     def dance(self):
         print("Piggy dance")
@@ -67,7 +76,7 @@ class GoPiggy(pigo.Pigo):
         self.twirl()
         self.back_it_up()
         self.chacha()
-        #self.sprinkler()
+        self.headshake()
 
     def shimmy(self):
         print('shimmy')
@@ -108,6 +117,13 @@ class GoPiggy(pigo.Pigo):
              self.encR(15)
              self.encL(30)
              self.encB(20)
+
+    def head_shake(self):
+        for x in range(2):
+             self.servo(30)
+             self.servo(150)
+        self.servo(self.MIDPOINT)
+
 
     ########################
     ### MAIN LOGIC LOOP - the core algorithm of my navigation
