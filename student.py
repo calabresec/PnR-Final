@@ -66,6 +66,76 @@ class GoPiggy(pigo.Pigo):
             if self.dist() < 30:
                 print('AAHHH')
                 break
+    def count_obstacles(self):
+        #run scan
+        self.wide_scan()
+        # count how many obstacles I found
+        counter = 0
+        # starting state assumes no obstacle
+        found_something = False
+        # loop through all of my scan data
+        for x in self.scan:
+            # if x is not none and really close
+            if x and x < self.STOP_DIST:
+                # if I've already found something
+                if found_something:
+                    print("obstacle continues")
+                    # if this is a new obstacle
+                else:
+                    # switch my tracker
+                    found_something = True
+                    print("start of new obstacle")
+                    # if my data shows safe distances
+            if x and x > self.STOP_DIST:
+                # if my tracker had been triggered...
+                if found_something:
+                    print("end of obstacle")
+                    # reset tracker
+                    found_something = False
+                    # increase count of obstacles
+                    counter += 1
+                print(' Total number of obstacles in this scan:' +str(counter))
+                return counter
+
+
+            def turn_test(self):
+                while True:
+                    ans = raw_input('Turn right, left or stop? (r/l/s): ')
+                    if ans == 'r':
+                        val = int(raw_input('/nBy how much?: '))
+                        self.encR(val)
+                    elif ans == 'l':
+                        val = int(raw_input('/nBy how much?: '))
+                        self.encL(val)
+                    else:
+                        break
+                self.restore_heading()
+
+            def restore_heading(self):
+                print("Now I'll turn back to the starting postion.")
+                # make self.turn_track go back to zero
+                self.set_speed(90, 90)
+                if self.turn_track > 0:
+                    print('I must have turned right a lot now I should turn left')
+                    self.encL(abs(self.turn_track))
+                elif self.turn_track < 0:
+                    print('I must have turned left a lot and now I have to self.encR(??)')
+                    self.encR(abs(self.turn_track))
+                self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
+
+            def encR(self, enc):
+                pigo.Pigo.encR(self, enc)
+                self.turn_track += enc
+
+            def encL(self, enc):
+                pigo.Pigo.encL(self, enc)
+                self.turn_track -= enc
+
+            # YOU DECIDE: How does your GoPiggy dance?
+            def dance(self):
+                print("Piggy dance")
+                ##### WRITE YOUR FIRST PROJECT HERE
+
 
 
     #YOU DECIDE: How does your GoPiggy dance?
