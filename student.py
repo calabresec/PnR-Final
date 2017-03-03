@@ -50,6 +50,7 @@ class GoPiggy(pigo.Pigo):
                 "c": ("Calibrate", self.calibrate),
                 "w": ("Sweep", self.sweep),
                 "o": ("Count Obstacles", self.count_obstacles),
+                "t": ("Total Obstacles", self.count_obstacles),
                 "s": ("Check status", self.status),
                 "q": ("Quit", quit)
                 }
@@ -134,7 +135,10 @@ class GoPiggy(pigo.Pigo):
 
             def total_obstacles(self):
                 counter = 0
+                for x in range(4):
                 counter += self.count_obstacles
+                self.encR(6)
+                print('Total number of obstacles in the scan' + str(counter))
                 #turn your robot
 
 
