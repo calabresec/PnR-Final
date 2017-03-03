@@ -96,7 +96,7 @@ class GoPiggy(pigo.Pigo):
                     counter += 1
                 print(' Total number of obstacles in this scan:' +str(counter))
                 return counter
-
+#
 
             def turn_test(self):
                 while True:
