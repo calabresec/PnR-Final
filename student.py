@@ -98,6 +98,7 @@ class GoPiggy(pigo.Pigo):
                 return counter
 #
 
+
             def turn_test(self):
                 while True:
                     ans = raw_input('Turn right, left or stop? (r/l/s): ')
