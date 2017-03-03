@@ -113,6 +113,31 @@ class GoPiggy(pigo.Pigo):
                         break
                 self.restore_heading()
 
+            def sweep(self):
+                for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
+                    self.servo(x)
+                    self.scan[x] = self.dist()
+                print("Here's what I saw")
+                print(self.scan)
+
+            def safety_dance(self):
+                for y in range(3):
+                    for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
+                        self.servo(x)
+                        if self.dist() > 30:
+                            print("Lets dance!")
+                        if self.dist() < 30:
+                            print("Abort mission")
+                            return
+                        self.encR(7)
+                    self.dance()
+
+            def total_obstacles(self):
+                counter = 0
+                counter += self.count_obstacles
+                #turn your robot
+
+
             def restore_heading(self):
                 print("Now I'll turn back to the starting postion.")
                 # make self.turn_track go back to zero
