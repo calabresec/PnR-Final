@@ -263,16 +263,14 @@ class GoPiggy(pigo.Pigo):
 def error():
     print('Error in input')
 
-def Keyboard():
-    raise KeyboardInterrupt
 
 def quit():
     raise SystemExit
 
 ##################################################################
 ######## The app starts right here when we instantiate our GoPiggy
-
-g = GoPiggy()
+try:
+    g = GoPiggy()
 except (KeyboardInterrupt, SystemExit):
-from gopigo import *
-stop()
+    from gopigo import *
+    stop()
