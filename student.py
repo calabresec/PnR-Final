@@ -101,71 +101,68 @@ class GoPiggy(pigo.Pigo):
 #
 
 
-            def turn_test(self):
-                while True:
-                    ans = raw_input('Turn right, left or stop? (r/l/s): ')
-                    if ans == 'r':
-                        val = int(raw_input('/nBy how much?: '))
-                        self.encR(val)
-                    elif ans == 'l':
-                        val = int(raw_input('/nBy how much?: '))
-                        self.encL(val)
-                    else:
-                        break
-                self.restore_heading()
+    def turn_test(self):
+        while True:
+            ans = raw_input('Turn right, left or stop? (r/l/s): ')
+            if ans == 'r':
+                val = int(raw_input('/nBy how much?: '))
+                self.encR(val)
+            elif ans == 'l':
+                val = int(raw_input('/nBy how much?: '))
+                self.encL(val)
+            else:
+                break
+        self.restore_heading()
 
-            def sweep(self):
-                for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
-                    self.servo(x)
-                    self.scan[x] = self.dist()
-                print("Here's what I saw")
-                print(self.scan)
+    def sweep(self):
+        for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
+            self.servo(x)
+            self.scan[x] = self.dist()
+        print("Here's what I saw")
+        print(self.scan)
 
-            def safety_dance(self):
-                for y in range(3):
-                    for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
-                        self.servo(x)
-                        if self.dist() > 30:
-                            print("Lets dance!")
-                        if self.dist() < 30:
-                            print("Abort mission")
-                            return
-                        self.encR(7)
-                    self.dance()
+    def safety_dance(self):
+        for y in range(3):
+            for x in range(self.MIDPOINT - 60, self.MIDPOINT + 60, 2):
+                self.servo(x)
+                if self.dist() > 30:
+                    print("Lets dance!")
+                if self.dist() < 30:
+                    print("Abort mission")
+                    return
+                self.encR(7)
+            self.dance()
 
-     def total_obstacles(self):
-         counter = 0
-         for x in range(4):
+    def total_obstacles(self):
+        counter = 0
+        for x in range(4):
              counter += self.count_obstacles
              self.encR(6)
-        print('Total number of obstacles in the scan' + str(counter))
-                #turn your robot
+    print('Total number of obstacles in the scan' + str(counter))
+        #turn your robot
 
 
-            def restore_heading(self):
-                print("Now I'll turn back to the starting postion.")
-                # make self.turn_track go back to zero
-                self.set_speed(90, 90)
-                if self.turn_track > 0:
-                    print('I must have turned right a lot now I should turn left')
-                    self.encL(abs(self.turn_track))
-                elif self.turn_track < 0:
-                    print('I must have turned left a lot and now I have to self.encR(??)')
-                    self.encR(abs(self.turn_track))
-                self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
+    def restore_heading(self):
+        print("Now I'll turn back to the starting postion.")
+        # make self.turn_track go back to zero
+        self.set_speed(90, 90)
+        if self.turn_track > 0:
+            print('I must have turned right a lot now I should turn left')
+            self.encL(abs(self.turn_track))
+        elif self.turn_track < 0:
+            print('I must have turned left a lot and now I have to self.encR(??)')
+            self.encR(abs(self.turn_track))
+        self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
-            def encR(self, enc):
-                pigo.Pigo.encR(self, enc)
-                self.turn_track += enc
+    def encR(self, enc):
+        pigo.Pigo.encR(self, enc)
+        self.turn_track += enc
 
-            def encL(self, enc):
-                pigo.Pigo.encL(self, enc)
-                self.turn_track -= enc
+    def encL(self, enc):
+        pigo.Pigo.encL(self, enc)
+        self.turn_track -= enc
 
-            # YOU DECIDE: How does your GoPiggy dance?
-            def dance(self):
-                print("Piggy dance")
-                ##### WRITE YOUR FIRST PROJECT HERE
+    # YOU DECIDE: How does your GoPiggy dance?
 
 
 
@@ -242,6 +239,21 @@ class GoPiggy(pigo.Pigo):
         print("[ Press CTRL + C to stop me, then run stop.py ]\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         # this is the loop part of the "main logic loop"
+        while True:
+            if self.is_clear():
+                self.cruise()
+            answer = self.choose_path()
+            if answer == "left":
+                self.encL(6)
+            elif answer == "right":
+                self.encR(6)
+
+    def cruise(self):
+        self.fwd()  # I added this to pigo
+        while self.is_clear():
+            time.sleep(.1)
+        self.stop()
+        self.encB(3)
 
 
 
