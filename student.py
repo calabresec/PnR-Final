@@ -251,7 +251,7 @@ class GoPiggy(pigo.Pigo):
     def cruise(self):
         self.fwd()  # I added this to pigo
         while self.is_clear():
-            time.sleep(.1)
+            time.sleep(.3)
         self.stop()
         self.encB(3)
 
