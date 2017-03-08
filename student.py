@@ -244,17 +244,16 @@ class GoPiggy(pigo.Pigo):
                 self.cruise()
             answer = self.choose_path()
             if answer == "left":
-                self.encL(3)
+                self.encL(2)
             elif answer == "right":
-                self.encR(3)
+                self.encR(2)
 
     def cruise(self):
         self.fwd()  # I added this to pigo
         while self.is_clear():
-            time.sleep(.3)
+            time.sleep(.1)
         self.stop()
         self.encB(3)
-
 
 
 
@@ -272,3 +271,6 @@ def quit():
 ######## The app starts right here when we instantiate our GoPiggy
 
 g = GoPiggy()
+except (KeyboardInterrupt, SystemExit):
+from gopigo import *
+stop()
