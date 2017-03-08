@@ -263,6 +263,8 @@ class GoPiggy(pigo.Pigo):
 def error():
     print('Error in input')
 
+def Keyboard():
+    raise KeyboardInterrupt
 
 def quit():
     raise SystemExit
