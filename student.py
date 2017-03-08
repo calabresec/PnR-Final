@@ -133,12 +133,12 @@ class GoPiggy(pigo.Pigo):
                 self.encR(7)
             self.dance()
 
-    def total_obstacles(self):
-        counter = 0
-        for x in range(4):
-             counter += self.count_obstacles
-             self.encR(6)
-    print('Total number of obstacles in the scan' + str(counter))
+    ## def total_obstacles(self):
+       # counter = 0
+       # for x in range(4):
+            # counter += self.count_obstacles
+           #  self.encR(6)
+    #print('Total number of obstacles in the scan' + str(counter))
         #turn your robot
 
 
