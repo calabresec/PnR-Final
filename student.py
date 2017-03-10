@@ -251,9 +251,18 @@ class GoPiggy(pigo.Pigo):
     def cruise(self):
         self.fwd()  # I added this to pigo
         while self.is_clear():
-            time.sleep(.1)
+            time.sleep(.3)
         self.stop()
         self.encB(3)
+
+    while self.is_clear():
+        self.encF(10)
+    self.restore_heading()
+    answer = self.choose_path()
+    if answer == "left":
+        self.encL(6)
+    elif answer == "right":
+        self.encR(6)
 
 
 
