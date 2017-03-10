@@ -252,8 +252,8 @@ class GoPiggy(pigo.Pigo):
         self.fwd()  # I added this to pigo
         while self.is_clear():
              time.sleep(.1)
-         self.stop()
-         self.encB(3)
+        self.stop()
+        self.encB(3)
 
 
 
