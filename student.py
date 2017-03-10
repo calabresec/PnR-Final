@@ -244,16 +244,17 @@ class GoPiggy(pigo.Pigo):
                 self.cruise()
             answer = self.choose_path()
             if answer == "left":
-                self.encL(2)
+                self.encL(6)
             elif answer == "right":
-                self.encR(2)
+                self.encR(6)
 
-    def cruise(self):
-        self.fwd()  # I added this to pigo
-        while self.is_clear():
-            time.sleep(.3)
-        self.stop()
-        self.encB(3)
+            def cruise(self):
+                self.fwd()  # I added this to pigo
+                while self.is_clear():
+                    time.sleep(.1)
+                self.stop()
+                self.encB(3)
+
 
 
 
