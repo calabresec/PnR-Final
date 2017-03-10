@@ -255,14 +255,7 @@ class GoPiggy(pigo.Pigo):
         self.stop()
         self.encB(3)
 
-    while self.is_clear():
-        self.encF(10)
-    self.restore_heading()
-    answer = self.choose_path()
-    if answer == "left":
-        self.encL(6)
-    elif answer == "right":
-        self.encR(6)
+
 
 
 
