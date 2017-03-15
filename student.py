@@ -241,21 +241,26 @@ class GoPiggy(pigo.Pigo):
         # this is the loop part of the "main logic loop"
         while True:
             if self.is_clear():
-                self.cruise()
-            answer = self.choose_path()
-            if answer == "left":
-                self.encL(6)
-            elif answer == "right":
+                self.encF(2)
+                count += 1
+            if count > 5 and self.turn_track !=0:
+                self.restore_heading()
+                count = 0
+             answer = self.choose_path()
+             if answer == "left"
+                 self.encL(6)
+            elif answer == "right"
                 self.encR(6)
+        # trying to change navigation
 
     def cruise(self):
-        self.fwd()  # I added this to pigo
-        while self.is_clear():
-             time.sleep(.1)
+        self.servo(self.MIDPOINT)
+        self.fwd()
+        while self.dist() > self.STOP_DIST:
+            time.sleep(.01)
         self.stop()
         self.encB(3)
-
-
+    #Trying Tucker's code
 
 
 
