@@ -246,8 +246,8 @@ class GoPiggy(pigo.Pigo):
             if count > 5 and self.turn_track !=0:
                 self.restore_heading()
                 count = 0
-             answer = self.choose_path()
-             if answer == "left"
+            answer = self.choose_path()
+            if answer == "left"
                  self.encL(6)
             elif answer == "right"
                 self.encR(6)
