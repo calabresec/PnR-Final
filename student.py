@@ -96,8 +96,8 @@ class GoPiggy(pigo.Pigo):
                     found_something = False
                     # increase count of obstacles
                     counter += 1
-                print(' Total number of obstacles in this scan:' +str(counter))
-                return counter
+        print(' Total number of obstacles in this scan:' +str(counter))
+        return counter
 #
 
 
