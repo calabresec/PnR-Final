@@ -247,9 +247,9 @@ class GoPiggy(pigo.Pigo):
                 self.restore_heading()
                 count = 0
             answer = self.choose_path()
-            if answer == "left"
+            if answer == "left":
                  self.encL(6)
-            elif answer == "right"
+            elif answer == "right":
                 self.encR(6)
         # trying to change navigation
 
