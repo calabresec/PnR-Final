@@ -278,3 +278,8 @@ def quit():
 ##################################################################
 ######## The app starts right here when we instantiate our GoPiggy
 
+try:
+    g = GoPiggy()
+except (KeyboardInterrupt, SystemExit):
+    from gopigo import *
+    stop()
