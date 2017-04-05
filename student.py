@@ -222,6 +222,7 @@ class GoPiggy(pigo.Pigo):
              self.encL(30)
              self.encB(20)
 
+
     def head_shake(self):
         for x in range(2):
              self.servo(30)
