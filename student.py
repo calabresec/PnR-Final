@@ -243,7 +243,7 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while True:
             if self.is_clear():
-                self.encF(2)
+                self.encF(4)
                 count += 1
             if count > 5 and self.turn_track !=0:
                 self.restore_heading()
@@ -254,6 +254,7 @@ class GoPiggy(pigo.Pigo):
             elif answer == "right":
                 self.encR(6)
         # trying to change navigation
+        # trying to make the robot move further when clear
 
     def cruise(self):
         self.servo(self.MIDPOINT)
