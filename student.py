@@ -245,6 +245,9 @@ class GoPiggy(pigo.Pigo):
             if self.is_clear():
                 self.encF(15)
                 count += 1
+            if self.dist() < 15 self.STOP_DIST:
+                self.encB(5)
+        #tring to make robot move backwards when locating obstacle
             if count > 5 and self.turn_track !=0:
                 self.restore_heading()
                 count = 0
@@ -255,6 +258,8 @@ class GoPiggy(pigo.Pigo):
                 self.encR(6)
         # trying to change navigation
         # trying to make the robot move further when clear
+
+
 
     def cruise(self):
         self.servo(self.MIDPOINT)
