@@ -243,7 +243,7 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while True:
             if self.is_clear():
-                self.encF(15)
+                self.encF(45)
                 count += 1
 
             # tring to make robot move backwards when locating obstacle
