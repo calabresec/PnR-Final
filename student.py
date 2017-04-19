@@ -248,7 +248,7 @@ class GoPiggy(pigo.Pigo):
 
             # trying to make robot move backwards when locating obstacle
             if self.dist() < self.STOP_DIST:
-                self.encB(5)
+                self.encB(2)
 
             if count > 5 and self.turn_track != 0:
                 self.restore_heading()
