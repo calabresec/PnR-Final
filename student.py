@@ -236,9 +236,9 @@ class GoPiggy(pigo.Pigo):
     ########################
 
         def nav(self):
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
-        print("[ Press CTRL + C to stop me, then run stop.py ]\n")
-        print("-----------! NAVIGATION ACTIVATED !------------\n")
+            print("-----------! NAVIGATION ACTIVATED !------------\n")
+            print("[ Press CTRL + C to stop me, then run stop.py ]\n")
+            print("-----------! NAVIGATION ACTIVATED !------------\n")
         # this is the loop part of the "main logic loop"
         count = 0
         while True:
@@ -252,8 +252,8 @@ class GoPiggy(pigo.Pigo):
 
             if count > 5 and self.turn_track != 0:
                 self.restore_heading()
-        print("Now I will turn back to my starting position")
-                count = 1
+            print("Now I will turn back to my starting position")
+                 count = 1
             answer = self.choose_path()
             if answer == "left":
                 self.encL(6)
