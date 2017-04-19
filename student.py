@@ -235,7 +235,7 @@ class GoPiggy(pigo.Pigo):
     ### (kind of a big deal)
     ########################
 
-    def nav(self):
+        def nav(self):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         print("[ Press CTRL + C to stop me, then run stop.py ]\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
@@ -250,18 +250,17 @@ class GoPiggy(pigo.Pigo):
             if self.dist() < self.STOP_DIST:
                 self.encB(5)
 
-            if count > 5 and self.turn_track !=0:
+            if count > 5 and self.turn_track != 0:
                 self.restore_heading()
-                count = 0
+        print("Now I will turn back to my starting position")
+                count = 1
             answer = self.choose_path()
             if answer == "left":
-                 self.encL(6)
+                self.encL(6)
             elif answer == "right":
                 self.encR(6)
-        # trying to change navigation
-        # trying to make the robot move further when clear
-
-
+                # trying to change navigation
+                # trying to make the robot move further when clear
 
     def cruise(self):
         self.servo(self.MIDPOINT)
