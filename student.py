@@ -244,8 +244,8 @@ class GoPiggy(pigo.Pigo):
         while True:
             while self.is_clear():
                 print("All clear! Pulsing forward")
-            self.encF(30)
-            # count += 1
+                self.encF(30)
+                # count += 1
 
             if self.dist() < self.STOP_DIST:
                 print("Too close. Backing up.")
