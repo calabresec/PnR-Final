@@ -256,13 +256,13 @@ class GoPiggy(pigo.Pigo):
                 count = 0
             '''
             if self.turn_track > 0:
-                print("Pulse turning left until I see a path")
-                while self.dist() < self.STOP_DIST + 20:
-                    self.encL(3)
-            else:
                 print("Pulse turning right until I see a path")
                 while self.dist() < self.STOP_DIST + 20:
                     self.encR(3)
+            else:
+                print("Pulse turning left until I see a path")
+                while self.dist() < self.STOP_DIST + 20:
+                    self.encL(3)
     def cruise(self):
         self.servo(self.MIDPOINT)
         self.fwd()
