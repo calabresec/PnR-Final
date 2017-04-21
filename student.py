@@ -235,34 +235,34 @@ class GoPiggy(pigo.Pigo):
     ### (kind of a big deal)
     ########################
 
-        def nav(self):
-            print("-----------! NAVIGATION ACTIVATED !------------\n")
-            print("[ Press CTRL + C to stop me, then run stop.py ]\n")
-            print("-----------! NAVIGATION ACTIVATED !------------\n")
-            # this is the loop part of the "main logic loop"
-            count = 0
-            while True:
-                while self.is_clear():
-                    print("All clear! Pulsing forward")
-                self.encF(30)
-                # count += 1
+    def nav(self):
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        print("[ Press CTRL + C to stop me, then run stop.py ]\n")
+        print("-----------! NAVIGATION ACTIVATED !------------\n")
+        # this is the loop part of the "main logic loop"
+        count = 0
+        while True:
+            while self.is_clear():
+                print("All clear! Pulsing forward")
+            self.encF(30)
+            # count += 1
 
-                if self.dist() < self.STOP_DIST:
-                    print("Too close. Backing up.")
-                self.encB(2)
-                '''
-                if count > 5 and self.turn_track != 0:
-                    self.restore_heading()
-                    count = 0
-                '''
-                if self.turn_track > 0:
-                    print("Pulse turning left until I see a path")
-                    while self.dist() < self.STOP_DIST + 20:
-                        self.encL(3)
-                else:
-                    print("Pulse turning right until I see a path")
-                    while self.dist() < self.STOP_DIST + 20:
-                        self.encR(3)
+            if self.dist() < self.STOP_DIST:
+                print("Too close. Backing up.")
+            self.encB(2)
+            '''
+            if count > 5 and self.turn_track != 0:
+                self.restore_heading()
+                count = 0
+            '''
+            if self.turn_track > 0:
+                print("Pulse turning left until I see a path")
+                while self.dist() < self.STOP_DIST + 20:
+                    self.encL(3)
+            else:
+                print("Pulse turning right until I see a path")
+                while self.dist() < self.STOP_DIST + 20:
+                    self.encR(3)
     def cruise(self):
         self.servo(self.MIDPOINT)
         self.fwd()
