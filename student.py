@@ -249,20 +249,24 @@ class GoPiggy(pigo.Pigo):
 
             if self.dist() < self.STOP_DIST:
                 print("Too close. Backing up.")
-            self.encB(2)
+                self.encB(2)
             '''
             if count > 5 and self.turn_track != 0:
                 self.restore_heading()
                 count = 0
             '''
+            self.servo(self.MIDPOINT)
             if self.turn_track > 0:
                 print("Pulse turning right until I see a path")
                 while self.dist() < self.STOP_DIST + 20:
-                    self.encR(3)
+                    self.encL(3)
+                    time.sleep(.5)
             else:
                 print("Pulse turning left until I see a path")
                 while self.dist() < self.STOP_DIST + 20:
-                    self.encL(3)
+                    self.encR(3)
+                    time.sleep(.5)
+
     def cruise(self):
         self.servo(self.MIDPOINT)
         self.fwd()
