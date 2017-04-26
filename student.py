@@ -243,7 +243,7 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while True:
 
-            self.pulse()
+             count = self.pulse(count)
 
 
             self.servo(self.MIDPOINT)
@@ -272,7 +272,8 @@ class GoPiggy(pigo.Pigo):
         self.encB(3)
 
     #pulsing forward each time the robot does not see an obstacle
-    def pulse(self):
+    def pulse(self, count):
+        count = 0
         while self.is_clear():
             print("All clear! Pulsing forward")
             if abs(self.turn_track) > 5:
@@ -284,11 +285,13 @@ class GoPiggy(pigo.Pigo):
         if self.dist() < self.STOP_DIST:
             print("Too close. Backing up.")
             self.encB(2)
-    #trying to have robot turn back to the direction it started in, when veering off
+        #trying to have robot turn back to the direction it started in, when veering off
 
         if count > 3 and self.turn_track != 0:
             self.restore_heading()
             count = 0
+            return count
+
 
 
 
