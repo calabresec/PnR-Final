@@ -246,21 +246,21 @@ class GoPiggy(pigo.Pigo):
              count = self.pulse(count)
 
 
-            self.servo(self.MIDPOINT)
-            if self.turn_track > 0:
-                print("Pulse turning right until I see a path")
-                while self.dist() < self.STOP_DIST + 20:
-                    if self.dist() < 10:
-                        self.encB(2)
-                    self.encL(4)
-                    time.sleep(.5)
-            else:
-                print("Pulse turning left until I see a path")
-                while self.dist() < self.STOP_DIST + 20:
-                    if self.dist() < 10:
-                        self.encB(2)
-                    self.encR(4)
-                    time.sleep(.5)
+        self.servo(self.MIDPOINT)
+        if self.turn_track > 0:
+            print("Pulse turning right until I see a path")
+            while self.dist() < self.STOP_DIST + 20:
+                if self.dist() < 10:
+                    self.encB(2)
+                self.encL(4)
+                time.sleep(.5)
+        else:
+            print("Pulse turning left until I see a path")
+            while self.dist() < self.STOP_DIST + 20:
+                if self.dist() < 10:
+                    self.encB(2)
+                self.encR(4)
+                time.sleep(.5)
 
         #Trying Tucker's code
     def cruise(self):
