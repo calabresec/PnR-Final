@@ -279,7 +279,7 @@ class GoPiggy(pigo.Pigo):
                 self.encF(15)
             else:
                 self.encF(30)
-                count += 1
+            count += 1
 
         if self.dist() < self.STOP_DIST:
             print("Too close. Backing up.")
