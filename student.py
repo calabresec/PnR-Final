@@ -242,18 +242,9 @@ class GoPiggy(pigo.Pigo):
         # this is the loop part of the "main logic loop"
         count = 0
         while True:
-            while self.is_clear():
-                print("All clear! Pulsing forward")
-                self.encF(30)
-                # count += 1
 
-            if self.dist() < self.STOP_DIST:
-                print("Too close. Backing up.")
-                self.encB(2)
+                self.pulse()
 
-            if count > 5 and self.turn_track != 0:
-                self.restore_heading()
-                count = 0
 
             self.servo(self.MIDPOINT)
             if self.turn_track > 0:
@@ -271,6 +262,7 @@ class GoPiggy(pigo.Pigo):
                     self.encR(4)
                     time.sleep(.5)
 
+        #Trying Tucker's code
     def cruise(self):
         self.servo(self.MIDPOINT)
         self.fwd()
@@ -278,7 +270,25 @@ class GoPiggy(pigo.Pigo):
             time.sleep(.01)
         self.stop()
         self.encB(3)
-    #Trying Tucker's code
+
+    #pulsing forward each time the robot does not see an obstacle
+    def pulse(self):
+        while self.is_clear():
+            print("All clear! Pulsing forward")
+            if abs(self.turn_track) > 5:
+                self.encF(15)
+            else:
+                self.encF(30)
+             count += 1
+
+        if self.dist() < self.STOP_DIST:
+            print("Too close. Backing up.")
+            self.encB(2)
+    #trying to have robot turn back to the direction it started in, when veering off
+
+        if count > 3 and self.turn_track != 0:
+            self.restore_heading()
+            count = 0
 
 
 
