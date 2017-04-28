@@ -246,7 +246,8 @@ class GoPiggy(pigo.Pigo):
              count = self.pulse(count)
 
 
-                self.servo(self.MIDPOINT)
+            self.servo(self.MIDPOINT)
+
             if self.turn_track > 0:
                 print("Pulse turning right until I see a path")
                 while self.dist() < self.STOP_DIST + 30:
