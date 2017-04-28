@@ -243,7 +243,7 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while True:
 
-             count = self.pulse(count)
+            count = self.pulse(count)
 
 
             self.servo(self.MIDPOINT)
