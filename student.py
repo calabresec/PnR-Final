@@ -249,15 +249,15 @@ class GoPiggy(pigo.Pigo):
         self.servo(self.MIDPOINT)
         if self.turn_track > 0:
             print("Pulse turning right until I see a path")
-            while self.dist() < self.STOP_DIST + 20:
-                if self.dist() < 10:
+            while self.dist() < self.STOP_DIST + 30:
+                if self.dist() < 15:
                     self.encB(2)
                 self.encL(4)
                 time.sleep(.5)
         else:
             print("Pulse turning left until I see a path")
-            while self.dist() < self.STOP_DIST + 20:
-                if self.dist() < 10:
+            while self.dist() < self.STOP_DIST + 30:
+                if self.dist() < 15:
                     self.encB(2)
                 self.encR(4)
                 time.sleep(.5)
@@ -276,7 +276,7 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while self.is_clear():
             print("All clear! Pulsing forward")
-            if abs(self.turn_track) > 5:
+            if abs(self.turn_track) > 10:
                 self.encF(15)
             else:
                 self.encF(30)
