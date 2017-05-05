@@ -295,7 +295,7 @@ class GoPiggy(pigo.Pigo):
 
     if count > 3 and self.turn_track != 0:
             self.restore_heading()
-           count = 0
+            count = 0
         return count
 
 
