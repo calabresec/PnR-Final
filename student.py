@@ -250,7 +250,8 @@ class GoPiggy(pigo.Pigo):
                 self.restore_heading()
                 #want robot to turn left or right when obstacle in the way
                 # when in initial direction pulses forward
-                pulse(self, count)
+                self.pulse(3)
+
 
 
             count = self.pulse(count)
