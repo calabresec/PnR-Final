@@ -249,7 +249,6 @@ class GoPiggy(pigo.Pigo):
                 # after moving back robot turns toward intial direction
                 self.restore_heading()
                 #want robot to turn left or right when obstacle in the way
-                self.turn_track()
                 # when in initial direction pulses forward
                 pulse(self, count)
 
