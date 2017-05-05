@@ -6,8 +6,8 @@ import random
 MR. A's Final Project Student Helper
 '''
 
-class GoPiggy(pigo.Pigo):
 
+class GoPiggy(pigo.Pigo):
     ########################
     ### CONTSTRUCTOR - this special method auto-runs when we instantiate a class
     #### (your constructor lasted about 9 months)
@@ -32,7 +32,6 @@ class GoPiggy(pigo.Pigo):
         while True:
             self.stop()
             self.menu()
-
 
     ########################
     ### CLASS METHODS - these are the actions that your object can run
@@ -63,13 +62,14 @@ class GoPiggy(pigo.Pigo):
         menu.get(ans, [None, error])[1]()
 
     def sweep(self):
-        for x in range(20,160,2):
+        for x in range(20, 160, 2):
             self.servo(x)
             if self.dist() < 30:
                 print('AAHHH')
                 break
+
     def count_obstacles(self):
-        #run scan
+        # run scan
         self.wide_scan()
         # count how many obstacles I found
         counter = 0
@@ -96,9 +96,10 @@ class GoPiggy(pigo.Pigo):
                     found_something = False
                     # increase count of obstacles
                     counter += 1
-        print(' Total number of obstacles in this scan:' +str(counter))
+        print(' Total number of obstacles in this scan:' + str(counter))
         return counter
-#
+
+    #
 
 
     def turn_test(self):
@@ -133,14 +134,13 @@ class GoPiggy(pigo.Pigo):
                 self.encR(7)
             self.dance()
 
-    ## def total_obstacles(self):
-       # counter = 0
-       # for x in range(4):
+            ## def total_obstacles(self):
+            # counter = 0
+            # for x in range(4):
             # counter += self.count_obstacles
-           #  self.encR(6)
-    #print('Total number of obstacles in the scan' + str(counter))
-        #turn your robot
-
+            #  self.encR(6)
+            # print('Total number of obstacles in the scan' + str(counter))
+            # turn your robot
 
     def restore_heading(self):
         print("Now I'll turn back to the starting postion.")
@@ -166,7 +166,7 @@ class GoPiggy(pigo.Pigo):
 
 
 
-    #YOU DECIDE: How does your GoPiggy dance?
+    # YOU DECIDE: How does your GoPiggy dance?
     def dance(self):
         print("Piggy dance")
         ##### WRITE YOUR FIRST PROJECT HERE
@@ -177,7 +177,7 @@ class GoPiggy(pigo.Pigo):
         self.head_shake()
 
     def head_shake(self):
-         for x in range(2):
+        for x in range(2):
             self.servo(30)
             self.servo(150)
             self.servo(self.MIDPOINT)
@@ -190,7 +190,7 @@ class GoPiggy(pigo.Pigo):
             self.encL(3)
 
     def twirl(self):
-        print ('twirl')
+        print('twirl')
         for x in range(2):
             self.encB(15)
             self.encR(30)
@@ -198,7 +198,6 @@ class GoPiggy(pigo.Pigo):
             self.encR(30)
             self.encF(15)
             self.stop()
-
 
     def back_it_up(self):
         print('back_it_up')
@@ -215,20 +214,18 @@ class GoPiggy(pigo.Pigo):
     def chacha(self):
         print('chacha')
         for x in range(2):
-             self.encR(15)
-             self.encL(30)
-             self.encB(20)
-             self.encR(15)
-             self.encL(30)
-             self.encB(20)
-
+            self.encR(15)
+            self.encL(30)
+            self.encB(20)
+            self.encR(15)
+            self.encL(30)
+            self.encB(20)
 
     def head_shake(self):
         for x in range(2):
-             self.servo(30)
-             self.servo(150)
+            self.servo(30)
+            self.servo(150)
         self.servo(self.MIDPOINT)
-
 
     ########################
     ### MAIN LOGIC LOOP - the core algorithm of my navigation
@@ -246,35 +243,38 @@ class GoPiggy(pigo.Pigo):
                 self.encF(30)
                 count += 1
 
-            #make robot move backwards when obstacle in front of it
+            # make robot move backwards when obstacle in front of it
             if self.dist() < self.STOP_DIST:
                 self.encB(3)
-            #after moving back robot turns toward intial direction
+                # after moving back robot turns toward intial direction
                 self.restore_heading()
-            # when in initial direction pulses forward
-                self.pulse(self)
+                #want robot to turn left or right when obstacle in the way
+                self.turn_track()
+                # when in initial direction pulses forward
+                pulse(self, count)
+
 
             count = self.pulse(count)
 
-
             self.servo(self.MIDPOINT)
 
-        #if self.turn_track > 0:
-                    #print("Pulse turning right until I see a path")
-                #while self.dist() < self.STOP_DIST + 30:
-                    #if self.dist() < 15:
-                        #self.encB(2)
-                    #self.encL(4)
-                    #time.sleep(.5)
-                #else:
-                    #print("Pulse turning left until I see a path")
-                    #while self.dist() < self.STOP_DIST + 30:
-                        #if self.dist() < 15:
-                            #self.encB(2)
-                        #self.encR(4)
-                        #time.sleep(.5)
+            if self.turn_track > 0:
+            print("Pulse turning left until I see a path")
+        while self.dist() < self.STOP_DIST + 30:
+            if self.dist() < 15:
+                self.encB(2)
+                self.encL(3)
+                time.sleep(.5)
+            else:
+                print("Pulse turning right until I see a path")
+            while self.dist() < self.STOP_DIST + 30:
+                if self.dist() < 15:
+                    self.encB(2)
+                    self.encR(3)
+                    time.sleep(.5)
 
-                        #Trying Tucker's code
+            # Trying Tucker's code
+
     def cruise(self):
         self.servo(self.MIDPOINT)
         self.fwd()
@@ -283,7 +283,7 @@ class GoPiggy(pigo.Pigo):
         self.stop()
         self.encB(3)
 
-    #pulsing forward each time the robot does not see an obstacle
+    # pulsing forward each time the robot does not see an obstacle
     def pulse(self, count):
         while self.is_clear():
             print("All clear! Pulsing forward")
@@ -293,13 +293,10 @@ class GoPiggy(pigo.Pigo):
                 self.encF(30)
             count += 1
 
-    #if count > 3 and self.turn_track != 0:
-            #self.restore_heading()
-            #count = 0
-        #return count
-
-
-
+            if count > 3 and self.turn_track != 0:
+            self.restore_heading()
+            count = 0
+            return count
 
 
 ####################################################
@@ -312,6 +309,7 @@ def error():
 def quit():
     raise SystemExit
 
+
 ##################################################################
 ######## The app starts right here when we instantiate our GoPiggy
 
@@ -319,4 +317,5 @@ try:
     g = GoPiggy()
 except (KeyboardInterrupt, SystemExit):
     from gopigo import *
+
     stop()
