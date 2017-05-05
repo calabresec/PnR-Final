@@ -240,7 +240,7 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while True:
             if self.is_clear():
-                    print("All is clear, Moving toward the finish line")
+                print("All is clear, Moving toward the finish line")
                 self.encF(30)
                 count += 1
             # make robot move backwards when obstacle in front of it
