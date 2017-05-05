@@ -242,13 +242,24 @@ class GoPiggy(pigo.Pigo):
         # this is the loop part of the "main logic loop"
         count = 0
         while True:
+            if self.is_clear():
+                self.encF(30)
+                count += 1
+
+            #make robot move backwards when obstacle in front of it
+            if self.dist() < self.STOP_DIST:
+                self.encB(3)
+            #after moving back robot turns toward intial direction
+                self.restore_heading()
+            # when in initial direction pulses forward
+                self.pulse(self)
 
             count = self.pulse(count)
 
 
             self.servo(self.MIDPOINT)
 
-            if self.turn_track > 0:
+        #if self.turn_track > 0:
                 print("Pulse turning right until I see a path")
                 while self.dist() < self.STOP_DIST + 30:
                     if self.dist() < 15:
@@ -282,7 +293,7 @@ class GoPiggy(pigo.Pigo):
                 self.encF(30)
             count += 1
 
-        if count > 3 and self.turn_track != 0:
+    #if count > 3 and self.turn_track != 0:
             self.restore_heading()
             count = 0
         return count
