@@ -259,7 +259,7 @@ class GoPiggy(pigo.Pigo):
             self.servo(self.MIDPOINT)
 
             if self.turn_track > 0:
-            print("Pulse turning left until I see a path")
+                print("Pulse turning left until I see a path")
         while self.dist() < self.STOP_DIST + 30:
             if self.dist() < 15:
                 self.encB(2)
