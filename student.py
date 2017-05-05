@@ -240,21 +240,16 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while True:
             if self.is_clear():
+                    print("All is clear, Moving toward the finish line")
                 self.encF(30)
                 count += 1
-
             # make robot move backwards when obstacle in front of it
             if self.dist() < self.STOP_DIST:
                 self.encB(3)
                 # after moving back robot turns toward intial direction
                 self.restore_heading()
-                #want robot to turn left or right when obstacle in the way
-                # when in initial direction pulses forward
-                self.pulse(3)
-
-
-
-            count = self.pulse(count)
+               # need robot to do a widescan to see obstacles on left and right before turning
+                self.wide_scan()
 
             self.servo(self.MIDPOINT)
 
@@ -272,6 +267,8 @@ class GoPiggy(pigo.Pigo):
                     self.encB(2)
                     self.encR(3)
                     time.sleep(.5)
+
+            self.pulse(2)
 
             # Trying Tucker's code
 
