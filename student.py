@@ -244,11 +244,11 @@ class GoPiggy(pigo.Pigo):
                 count += 1
 
             # trying to make robot move backwards when locating obstacle
-            if self.dist() < self.STOP_DIST:
+            if self.dist() < 20
                 self.encB(2)
 
             #moves back toward initial direction after moving backwards
-            if count > 5 and self.turn_track != 0:
+            if count > 3 and self.turn_track != 0:
                 self.restore_heading()
                 count = 0
                 self.servo(self.MIDPOINT)
@@ -257,6 +257,7 @@ class GoPiggy(pigo.Pigo):
                 self.encL(3)
             elif answer == "right":
                 self.encR(3)
+
                 # trying to change navigation
                 # trying to make the robot move further when clear
                 #debating whether to put turn track in
