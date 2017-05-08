@@ -244,7 +244,7 @@ class GoPiggy(pigo.Pigo):
                 count += 1
 
             # trying to make robot move backwards when locating obstacle
-            if self.dist() < 20
+            if self.dist() < 20:
                 self.encB(2)
 
             #moves back toward initial direction after moving backwards
