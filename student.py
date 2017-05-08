@@ -237,29 +237,29 @@ class GoPiggy(pigo.Pigo):
         print("[ Press CTRL + C to stop me, then run stop.py ]\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         # this is the loop part of the "main logic loop"
-            count = 0
-            while True:
-                if self.is_clear():
-                    self.encF(30)
-                    count += 1
+        count = 0
+        while True:
+            if self.is_clear():
+                self.encF(30)
+                count += 1
 
-                # trying to make robot move backwards when locating obstacle
-                if self.dist() < self.STOP_DIST:
-                    self.encB(2)
+            # trying to make robot move backwards when locating obstacle
+            if self.dist() < self.STOP_DIST:
+                self.encB(2)
 
-                #moves back toward initial direction after moving backwards
-                if count > 5 and self.turn_track != 0:
-                    self.restore_heading()
-                    count = 0
-                    self.servo(self.MIDPOINT)
-                answer = self.choose_path()
-                if answer == "left":
-                    self.encL(3)
-                elif answer == "right":
-                    self.encR(3)
-                    # trying to change navigation
-                    # trying to make the robot move further when clear
-                    #debating whether to put turn track in
+            #moves back toward initial direction after moving backwards
+            if count > 5 and self.turn_track != 0:
+                self.restore_heading()
+                count = 0
+                self.servo(self.MIDPOINT)
+            answer = self.choose_path()
+            if answer == "left":
+                self.encL(3)
+            elif answer == "right":
+                self.encR(3)
+                # trying to change navigation
+                # trying to make the robot move further when clear
+                #debating whether to put turn track in
 
 
                     # Trying Tucker's code
