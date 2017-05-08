@@ -237,40 +237,32 @@ class GoPiggy(pigo.Pigo):
         print("[ Press CTRL + C to stop me, then run stop.py ]\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         # this is the loop part of the "main logic loop"
-        count = 0
-        while True:
-            if self.is_clear():
-                print("All is clear, Moving toward the finish line")
-                self.encF(30)
-                count += 1
-            # make robot move backwards when obstacle in front of it
-            if self.dist() < self.STOP_DIST:
-                self.encB(3)
-                # after moving back robot turns toward intial direction
-                self.restore_heading()
-               # need robot to do a widescan to see obstacles on left and right before turning
-                self.wide_scan()
+            count = 0
+            while True:
+                if self.is_clear():
+                    self.encF(30)
+                    count += 1
 
-            self.servo(self.MIDPOINT)
-
-            if self.turn_track > 0:
-                print("Pulse turning left until I see a path")
-        while self.dist() < self.STOP_DIST + 30:
-            if self.dist() < 15:
-                self.encB(2)
-                self.encL(3)
-                time.sleep(.5)
-            else:
-                print("Pulse turning right until I see a path")
-            while self.dist() < self.STOP_DIST + 30:
-                if self.dist() < 15:
+                # trying to make robot move backwards when locating obstacle
+                if self.dist() < self.STOP_DIST:
                     self.encB(2)
+
+                #moves back toward initial direction after moving backwards
+                if count > 5 and self.turn_track != 0:
+                    self.restore_heading()
+                    count = 0
+                    self.servo(self.MIDPOINT)
+                answer = self.choose_path()
+                if answer == "left":
+                    self.encL(3)
+                elif answer == "right":
                     self.encR(3)
-                    time.sleep(.5)
+                    # trying to change navigation
+                    # trying to make the robot move further when clear
+                    #debating whether to put turn track in
 
-            self.pulse(2)
 
-            # Trying Tucker's code
+                    # Trying Tucker's code
 
     def cruise(self):
         self.servo(self.MIDPOINT)
