@@ -241,7 +241,7 @@ class GoPiggy(pigo.Pigo):
             if self.is_clear():
                 self.servo(self.MIDPOINT)
                 #encF 75% of the distance scanned (testing)
-                self.encF(self.disy()*.75)
+                self.encF(self.dist()*.75)
                 self.encF(30)
                 count += 1
 
