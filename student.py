@@ -145,7 +145,6 @@ class GoPiggy(pigo.Pigo):
     def restore_heading(self):
         print("Now I'll turn back to the starting postion.")
         # make self.turn_track go back to zero
-        self.set_speed(90, 90)
         if self.turn_track > 0:
             print('I must have turned right a lot now I should turn left')
             self.encL(abs(self.turn_track))
@@ -240,6 +239,9 @@ class GoPiggy(pigo.Pigo):
         count = 0
         while True:
             if self.is_clear():
+                self.servo(self.MIDPOINT)
+                #encF 75% of the distance scanned (testing)
+                self.encF(self.disy()*.75)
                 self.encF(30)
                 count += 1
 
@@ -251,7 +253,6 @@ class GoPiggy(pigo.Pigo):
             if count > 3 and self.turn_track != 0:
                 self.restore_heading()
                 count = 0
-                self.servo(self.MIDPOINT)
             answer = self.choose_path()
             if answer == "left":
                 self.encL(3)
