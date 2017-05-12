@@ -248,7 +248,7 @@ class GoPiggy(pigo.Pigo):
                 self.encB(2)
 
             #moves back toward initial direction after moving backwards
-            if count > 2 and self.turn_track != 0:
+            if count > 3 and self.turn_track != 0:
                 self.restore_heading()
                 count = 0
                 self.servo(self.MIDPOINT)
