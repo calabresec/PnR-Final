@@ -20,7 +20,7 @@ class GoPiggy(pigo.Pigo):
         # YOU DECIDE: How close can an object get (cm) before we have to stop?
         self.STOP_DIST = 30
         # YOU DECIDE: What left motor power helps straighten your fwd()?
-        self.LEFT_SPEED = 135
+        self.LEFT_SPEED = 115
         # YOU DECIDE: What left motor power helps straighten your fwd()?
         self.RIGHT_SPEED = 155
         # This one isn't capitalized because it changes during runtime, the others don't
@@ -241,7 +241,7 @@ class GoPiggy(pigo.Pigo):
             if self.is_clear():
                 self.servo(self.MIDPOINT)
                 #encF 75% of the distance scanned (testing)
-                self.encF(int(self.dist()*.75))
+                self.encF(int(self.dist()*.65))
                 count += 1
 
             # trying to make robot move backwards when locating obstacle
