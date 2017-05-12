@@ -241,8 +241,7 @@ class GoPiggy(pigo.Pigo):
             if self.is_clear():
                 self.servo(self.MIDPOINT)
                 #encF 75% of the distance scanned (testing)
-                self.encF(self.dist()*.75)
-                self.encF(30)
+                self.encF(int(self.dist()*.75))
                 count += 1
 
             # trying to make robot move backwards when locating obstacle
