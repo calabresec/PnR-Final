@@ -269,7 +269,7 @@ class GoPiggy(pigo.Pigo):
     def check_ahead(self):
         self.servo(self.MIDPOINT)
         if self.dist() < self.STOP_DIST:
-            self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED * .5)
+            self.set_speed(self.LEFT_SPEED, int(self.RIGHT_SPEED * .5))
             while self.dist() < self.STOP_DIST:
                 time.sleep(.01)
             self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
