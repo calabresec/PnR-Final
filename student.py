@@ -238,7 +238,7 @@ class GoPiggy(pigo.Pigo):
         # this is the loop part of the "main logic loop"
 
         check_ahead(self)
-
+        # count = 0
         #while True:
             #if self.is_clear():
                 #self.servo(self.MIDPOINT)
@@ -253,7 +253,7 @@ class GoPiggy(pigo.Pigo):
             #moves back toward initial direction after moving backwards
             #if count > 3 and self.turn_track != 0:
                 #self.restore_heading()
-                count = 0
+                #count = 0
             #answer = self.choose_path()
             #if answer == "left":
                 #self.encL(3)
