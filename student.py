@@ -236,32 +236,44 @@ class GoPiggy(pigo.Pigo):
         print("[ Press CTRL + C to stop me, then run stop.py ]\n")
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         # this is the loop part of the "main logic loop"
+
+        check_ahead(self)
+
+
         count = 0
-        while True:
-            if self.is_clear():
-                self.servo(self.MIDPOINT)
+        #while True:
+            #if self.is_clear():
+                #self.servo(self.MIDPOINT)
                 #encF 75% of the distance scanned (testing)
-                self.encF(int(self.dist()*.65))
-                count += 1
+                #self.encF(int(self.dist()*.65))
+                #count += 1
 
             # trying to make robot move backwards when locating obstacle
-            if self.dist() < 15:
-                self.encB(2)
+            #if self.dist() < 15:
+                #self.encB(2)
 
             #moves back toward initial direction after moving backwards
-            if count > 3 and self.turn_track != 0:
-                self.restore_heading()
+            #if count > 3 and self.turn_track != 0:
+                #self.restore_heading()
                 count = 0
-            answer = self.choose_path()
-            if answer == "left":
-                self.encL(3)
-            elif answer == "right":
-                self.encR(3)
+            #answer = self.choose_path()
+            #if answer == "left":
+                #self.encL(3)
+            #elif answer == "right":
+                #self.encR(3)
 
                 # trying to change navigation
                 # trying to make the robot move further when clear
                 #debating whether to put turn track in
 
+
+    def check_ahead(self):
+        self.servo(self.MIDPOINT)
+        if self.dist() < self.STOP_DIST:
+            self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED * .5)
+            while self.dist() < self.STOP_DIST:
+                time.sleep(.01)
+            self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
                     # Trying Tucker's code
 
