@@ -237,7 +237,7 @@ class GoPiggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         # this is the loop part of the "main logic loop"
 
-        check_ahead(self)
+        self.check_ahead()
         # count = 0
         #while True:
             #if self.is_clear():
