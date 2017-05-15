@@ -237,10 +237,11 @@ class GoPiggy(pigo.Pigo):
         print("-----------! NAVIGATION ACTIVATED !------------\n")
         # this is the loop part of the "main logic loop"
 
-        self.check_ahead()
         # count = 0
-        #while True:
-            #if self.is_clear():
+        while True:
+            if self.is_clear():
+                self.fwd()
+                self. check_ahead()
                 #self.servo(self.MIDPOINT)
                 #encF 75% of the distance scanned (testing)
                 #self.encF(int(self.dist()*.65))
