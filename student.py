@@ -241,9 +241,11 @@ class GoPiggy(pigo.Pigo):
         while True:
             if self.is_clear():
                 self.fwd()
-                self.check_ahead()
             else:
                 self.stop()
+            while True:
+                self.check_ahead()
+
                 #self.servo(self.MIDPOINT)
                 #encF 75% of the distance scanned (testing)
                 #self.encF(int(self.dist()*.65))
