@@ -240,7 +240,7 @@ class GoPiggy(pigo.Pigo):
         check_ahead(self)
 
 
-        #count = 0
+    #count = 0
         #while True:
             #if self.is_clear():
                 #self.servo(self.MIDPOINT)
