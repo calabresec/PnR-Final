@@ -156,6 +156,7 @@ class Pigo(object):
             time.sleep(.01)
 
     def is_clear(self):
+        self.stop()
         print("Running the is_clear method.")
         for x in range((self.MIDPOINT - 15), (self.MIDPOINT + 15), 5):
             servo(x)
