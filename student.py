@@ -275,45 +275,44 @@ class GoPiggy(pigo.Pigo):
     # how do I get it to loop in and switch between left and right checks
     # should I make it a chain
     def check_right(self):
-        self.servo(self.MIDPOINT)
+        self.servo(self.MIDPOINT+15)
         if self.dist() < self.STOP_DIST *1.5:
+            if self.dist() < 5:
+                self.stop()
+                self.encB(2)
             self.set_speed(self.LEFT_SPEED, int(self.RIGHT_SPEED * .4))
-            while self.dist() < self.STOP_DIST:
+            return false
+        elif self.dist() < self.STOP_DIST:
                 time.sleep(.01)
+            self.set_speed(self.LEFT_SPEED, int(self.RIGHT_SPEED * .2))
+                # check if something is close
+        elif self.dist() < self.STOP_DIST * 3:
+                # SOFTER TURN
+            self.set_speed(self.LEFT_SPEED, int(self.RIGHT_SPEED * .5))
 
-    def check_left(self):
-        self.servo(self.MIDPOINT)
-        if self.dist() < self.STOP_DIST *1.5:
-            self.set_speed(self.RIGHT_SPEED, int(self.LEFT_SPEED * .4))
-            while self.dist() < self.STOP_DIST:
-                time.sleep(.01)
+    # restore default speeds now that we're successful
+    self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
+    return True  # we look cool for now, roll on
 
 
 
-        # Trying Tucker's code
 
-    def cruise(self):
-        self.servo(self.MIDPOINT)
-        self.fwd()
-        while self.dist() > self.STOP_DIST:
-            time.sleep(.01)
-        self.stop()
-        self.encB(3)
+
 
     # pulsing forward each time the robot does not see an obstacle
-    def pulse(self, count):
-        while self.is_clear():
-            print("All clear! Pulsing forward")
-            if abs(self.turn_track) > 10:
-                self.encF(15)
-            else:
-                self.encF(30)
-            count += 1
+    #def pulse(self, count):
+        #while self.is_clear():
+           # print("All clear! Pulsing forward")
+            #if abs(self.turn_track) > 10:
+                #self.encF(15)
+           # else:
+                #self.encF(30)
+           #count += 1
 
-            if count > 3 and self.turn_track != 0:
-                self.restore_heading()
-            count = 0
-            return count
+            #if count > 3 and self.turn_track != 0:
+               # self.restore_heading()
+            #count = 0
+            #return count
 
 
 ####################################################
