@@ -288,8 +288,7 @@ class GoPiggy(pigo.Pigo):
             while self.dist() < self.STOP_DIST:
                 time.sleep(.01)
 
-    Nav = set literal(("check_right" , "check_Left"))
-    somelist = [c for c in somelist if not c not in Nav]
+
 
         # Trying Tucker's code
 
