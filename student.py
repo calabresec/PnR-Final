@@ -244,7 +244,10 @@ class GoPiggy(pigo.Pigo):
             else:
                 self.stop()
             while True:
-                self.check_ahead()
+                self.check_left()
+            if self.dist() < self.STOP_DIST *1.5:
+                self.check_right()
+
 
                 #self.servo(self.MIDPOINT)
                 #encF 75% of the distance scanned (testing)
@@ -269,16 +272,26 @@ class GoPiggy(pigo.Pigo):
                 # trying to make the robot move further when clear
                 #debating whether to put turn track in
 
-
-    def check_ahead(self):
+    # how do I get it to loop in and switch between left and right checks
+    # should I make it a chain
+    def check_right(self):
         self.servo(self.MIDPOINT)
         if self.dist() < self.STOP_DIST *1.5:
             self.set_speed(self.LEFT_SPEED, int(self.RIGHT_SPEED * .4))
             while self.dist() < self.STOP_DIST:
                 time.sleep(.01)
-        self.set_speed(self.LEFT_SPEED, self.RIGHT_SPEED)
 
-                    # Trying Tucker's code
+    def check_left(self):
+        self.servo(self.MIDPOINT)
+        if self.dist() < self.STOP_DIST *1.5:
+            self.set_speed(self.RIGHT_SPEED, int(self.LEFT_SPEED * .4))
+            while self.dist() < self.STOP_DIST:
+                time.sleep(.01)
+
+    Nav = set literal(("check_right" , "check_Left"))
+    somelist = [c for c in somelist if not c not in Nav]
+
+        # Trying Tucker's code
 
     def cruise(self):
         self.servo(self.MIDPOINT)
