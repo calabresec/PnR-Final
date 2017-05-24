@@ -284,7 +284,7 @@ class GoPiggy(pigo.Pigo):
             return false
         elif self.dist() < self.STOP_DIST:
                 time.sleep(.01)
-            self.set_speed(self.LEFT_SPEED, int(self.RIGHT_SPEED * .2))
+        self.set_speed(self.LEFT_SPEED, int(self.RIGHT_SPEED * .2))
                 # check if something is close
         elif self.dist() < self.STOP_DIST * 3:
                 # SOFTER TURN
